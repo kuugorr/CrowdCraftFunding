@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+
+<html lang="it">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link type="text/css" rel="stylesheet" href="stylee.css" />
+  
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+
+        <!-- Custom JS -->
+         <!--<script defer src="js/moment.min.js"></script>-->
+        <script defer type="module" src="js/main.js"></script>
+        <script defer type="js" src="./js/prog-manager.js"></script>
+
+        <title>CrowdCraft</title>
+    </head>
+
+    
+  <body>
+    <script>
+      $(document).ready(function(){
+        $('.butnav').click(function(){
+          $('.progSide').toggleClass('wide')
+        });
+      });
+    </script>
+    <!-- Navigation bar -->
+    
+    <nav class="navbar">
+          <a class="logo" href="/progetti">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+            </svg>
+            CrowdCraft</a>
+            <ul class="navlinks" id="nav-links">
+              <li><a href="/guida">Guida</a></li>
+              <li><a href="/progetti/important">Projects</a></li>
+            </ul>
+            <a class="cta" href="#"><button>Contact</button></a>
+            <section class="d-flex">
+              <input class="form-control" id="myInput" type="text" placeholder="cerca..">
+                <button class="btn" type="submit">Cerca</button>
+                <div id="risultati"></div>
+            </section>
+            
+            <script>
+              const input=document.getElementById("myInput")
+              input.addEventListener("keyup",autocomplete);
+              const risultati=document.getElementById("risultati")
+
+              function autocompleteMatch(valore){
+                let counter=1;
+                var el=[];
+                while(document.getElementById("titolo"+counter).innerHTML){
+                  el.push(document.getElementById("titolo"+counter).innerHTML);
+                  counter ++;
+                }
+                
+                console.log(el);
+                if(valore=="") return[]
+                const reg=new RegExp(valore);
+                const progs=this.progManager.progs
+                console.log(progs);
+                const titoli=[];
+                for(const prog of progs){
+                  titoli.push(prog.titolo);
+                }
+                  return titoli.filter(i =>{
+                  if(i.match(reg)) return i
+                })
+                
+               
+              }
+
+              function autocomplete(input){
+                console.log(input);
+                let CategorieConsigliate=[];
+                progs=autocompleteMatch(input.target.value)
+                for(const prog of progs){
+                  CategorieConsigliate+=`<li class="hover:bg-gray-200" onclick="seleziona(event)"></li>`
+                }
+                risultati.innerHTML=`<div>${CategorieConsigliate}</div>`;
+              }
+              
+              function seleziona(event){
+                risultati.innerHTML="";
+                input.value=event.target.textContent;
+              }
+            </script> 
+             <!-- Link to the login/user profile -->
+            <div class="navbar-nav ml-md-auto" id="login-area">
+            </div>
+            
+    </nav>
+    
+    <!-- Content of the page -->
+    <div class="containerr">
+      <div class="row vheight-100" id="app">
+      </div>
+    </div>
+
+    <div class="containerrr">
+      <div class="row vheight-100" id="footer-template">
+      </div>
+    </div>
+  
+  </body>
+
+
+    
+</html>
