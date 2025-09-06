@@ -17,7 +17,6 @@ import donazione from './donazioni.js';
 import CommentManager from './commentManager.js';
 import commento from './commenti.js'
 import guidaForm from './templates/guida-template.js'
-import footerr from './templates/footer-template.js'
 import donationManager from './donationManager.js';
 
 
@@ -32,8 +31,6 @@ class App {
         this.Api=new Api();
         this.docManager=new docManager();
         this.CommentManager=new CommentManager();
-        this.footer=footer;
-       // this.footer.innerHTML=footerr();
         this.donationManager=new donationManager();
 
         

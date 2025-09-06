@@ -9,7 +9,7 @@ function index() {
   <div class="background">
   <div class="descrizione">
   <h1 style="font-size: 30px;">
-  <span>Crowdcraft, la piattaforma più avanzata per investire con l’Equity Crowdfunding</span></h1></div>
+  <span>CrowdcraftFunding, la piattaforma più avanzata per investire con l’Equity Crowdfunding</span></h1></div>
   <div>
   <p style="font-size: 20px;">
   <span>Siamo una piattaforma italiana per investimenti in equity crowdfunding che permette di investire nelle migliori <b>
