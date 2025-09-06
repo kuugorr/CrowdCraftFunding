@@ -1,27 +1,12 @@
-import ProgManager from './prog-Manager.js';
+// se app.js si trova in public/js
+import { docManager, ProgManager, donationManager, Api, CommentManager } from './api/indexManager.js';
+import { documento, progetto, commento, finanziatore, donazione } from './models/index.js';
+import { index, createLogin, createUser, createAlert, Commform, docform, guidaForm, footerr } from './templates/index-template.js';
 import Filter from './filter.js';
-import progetto from './PROGETTI.js';
-import page from '//unpkg.com/page/page.mjs';
-import {userPage, createProfileAnswer} from './templates/user-template.js';
-import index from './templates/progetti-template.js';
-import {createLogin, createUser} from './templates/nav-template.js';
-import Api from './api.js';
-import createAlert from './templates/alert-template.js';
-import {createAddForm,createAddDocForm,donationForm,createLoginForm,createRegisterForm,createAddCommentForm} from './templates/form-template.js';
-import Commform from './templates/comments-template.js';
-import finanziatore from './finanziatore.js';
-import docform from './templates/documenti-template.js';
-import docManager from './doc-manager.js'
-import documento from './documenti.js';
-import donazione from './donazioni.js';
-import CommentManager from './commentManager.js';
-import commento from './commenti.js'
-import guidaForm from './templates/guida-template.js'
-import footerr from './templates/footer-template.js'
-import donationManager from './donationManager.js';
+import { createAddForm, createAddDocForm, donationForm, createLoginForm, createRegisterForm, createAddCommentForm } from './templates/form-template.js';
 
-
-
+// per page.js - usa la versione per browser (ES module):
+import page from '/js/vendor/page.mjs'; 
 
 class App {
     constructor(appContainer,userContainer,navLinks,navButtons,footer) {
@@ -51,6 +36,7 @@ class App {
             page.redirect('/');
         });
         page('/progetti', (ctx) => {
+            console.log("Form trovato?");
             this.showAllProgetti(ctx.path);
         });
         page('/progetti/:ID/delete', (ctx) => {
@@ -138,6 +124,7 @@ class App {
      * @param {*} form the HTML element representing the form
      */
     async initForm(){
+        console.log("Form trovato, fanculo");
         const input=document.getElementById("myInput")
         input.addEventListener("keyup",this.autocomplete);
         this.appContainer.innerHTML = index();
@@ -620,7 +607,8 @@ class App {
      * Create the HTML table for showing the progs
      * @param {*} progs 
      */
-     showAllProgetti= async (path) => {      
+     showAllProgetti= async (path) => {  
+        console.log("Fottitiii!", form);    
             await this.initForm();
             this.showProgetti(this.progManager.progs, path);
         }

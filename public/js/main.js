@@ -9,5 +9,7 @@ const navLinks=document.getElementById("nav-links");
 const navButtons=document.getElementById("navButtons");
 const footer = document.querySelector('#footer');
 
+console.log("scrivi qualcosa?");
 // creating our app
 const app = new App(appContainer,userContainer,navLinks,navButtons,footer);
+console.log("Form trovato?");

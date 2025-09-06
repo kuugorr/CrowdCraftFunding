@@ -1,6 +1,6 @@
-import commento from './commenti.js';
+import commento from '../models/comment.js';
 
-class CommentManager
+class commentManager
 {
 
     constructor(){
@@ -204,4 +204,4 @@ class CommentManager
     }*/
 }
 
-export default CommentManager;
+export default commentManager;

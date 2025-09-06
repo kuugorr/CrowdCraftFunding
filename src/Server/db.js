@@ -2,12 +2,12 @@
 
 const moment = require('moment');
 const sqlite = require('sqlite3').verbose();
-const progetto = require('./progetti');
-const documento = require('./documento');
-const commento = require('./commento');
-const db = new sqlite.Database('dbprogetto.db', (err) => {
+const progetto = require('../Client/models/progetto.js');
+const documento = require('../Client/models/document.js');
+const commento = require('../Client/models/comment.js');
+const db = new sqlite.Database('../../dbprogetto.db', (err) => {
   if (err) {
-    console.err(err.message);
+    console.error(err.message);
     throw err;
   }
 });

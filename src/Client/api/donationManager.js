@@ -1,4 +1,4 @@
-import donazione from './donazioni.js';
+import donazione from '../models/donation.js';
 
 class donationManager {
 

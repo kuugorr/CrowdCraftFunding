@@ -1,6 +1,6 @@
-import documento from './documenti.js';
+import documento from '../models/document.js';
 
-class docManager {
+class documentManager {
 
     constructor(){
         this.docs = [];
@@ -164,4 +164,4 @@ async addDoc(documento) {
         }
     
 }
-export default docManager;
+export default documentManager;

@@ -1,4 +1,4 @@
-import finanziatore from './finanziatore.js';
+import finanziatore from '../models/finanziatore.js';
 
 class Api {
     constructor(){

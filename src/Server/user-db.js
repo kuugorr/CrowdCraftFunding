@@ -5,8 +5,8 @@
 const bcrypt = require('bcrypt');
 const moment = require('moment');
 const sqlite = require('sqlite3');
-const finanziatore = require('./finanziatore');
-const db = new sqlite.Database('dbprogetto.db', (err) => {
+const finanziatore = require('../finanziatore');
+const db = new sqlite.Database('../../dbprogetto.db', (err) => {
   if (err) throw err;
 });
 

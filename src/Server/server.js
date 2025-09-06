@@ -11,7 +11,6 @@ const session = require('express-session');
 const path = require('path');
 // const initialize=require('passport-config')
 
-
 // set up the "username and password" login strategy
 // by setting a function to verify username and password
 passport.use(new LocalStrategy(
@@ -50,7 +49,7 @@ const isLoggedIn = (req, res, next) => {
 
 //init
 const app = express()
-const port = 3000;
+const port = 4711;
 
 
 // set up the middleware
@@ -485,8 +484,16 @@ app.post('/api/register', [
 });
 
 // All the other requests will be served by our client-side app
+
+// servi i file statici
+app.use(express.static(path.join(__dirname, "../../public")));
+
+// tutte le altre route ritornano index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../public/index.html"));
+});
 app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, 'public/index.html'));
+  response.sendFile(path.resolve(__dirname, '../../public/index.html'));
 });
 // activate the server
 app.listen(port, () => console.log(`Server listening at http://localhost:${port}`));

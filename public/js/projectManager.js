@@ -1,6 +1,4 @@
-import progetto from './PROGETTI.js';
-
-class progettoManager {
+class projectManager {
 
     constructor(){
         this.progs = [];
@@ -274,4 +272,4 @@ class progettoManager {
     
 }
 
-export default progettoManager;
+export default projectManager;
